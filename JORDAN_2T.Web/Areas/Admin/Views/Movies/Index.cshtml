@@ -1,0 +1,108 @@
+﻿@model JORDAN_2T.ApplicationCore.ViewModels.Admin.AdminMovieListVM;
+@using JORDAN_2T.ApplicationCore.Utilities
+
+@{
+    ViewBag.Title = "Store Administration";
+    Pager pager = new Pager();
+    int pageNo=0;
+    if(ViewBag.Pager !=null){
+       pager=ViewBag.Pager;
+       pageNo=pager.CurrentPage;
+    }
+}
+<div class="container">
+    <section class="mt-5">
+        <header>
+            <h1 class="heading-line mb-5">Manage Product</h1>
+            <div class="row">
+                <div class="col-6 d-flex">
+                    @using (Html.BeginForm("Index", "Movies", FormMethod.Post, new { @class = "form-inline" }))
+                    {
+                        @Html.DropDownListFor(vm => vm.Status, Model.StatusList, new { @class = "form-select mb-3", onchange = @"form.submit();" })
+                    }
+                </div>
+                <form asp-controller="Movies" asp-action="Index" method="get">
+                    <p>
+                          <input type="hidden" name="Status" value="@Model.Status">
+                        Search Product Name: <input type="text" name="SearchString" />
+                        <input type="submit" value="Filter" />
+                    </p>
+                </form>
+                <div class="col-6">
+                    <a asp-controller="Movies" asp-action="Create" class="btn btn-success mb-3 right">Create New</a>
+                </div>
+            </div>
+        </header>
+    </section>
+    <section>
+        <div class="card">
+            <div class="card-block">
+                <table class="table">
+                    <thead>
+                        <tr class="row m-2">
+                            <th class="d-inline-block col-md-2 col-2">Number</th>
+                            <th class="d-inline-block col-md-6 col-6 hidden-md-down">Name</th>
+                            <th class="d-inline-block col-md-2 col-2">Price</th>
+                            <th class="d-inline-block col-md-2 col-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var movie in Model.Movies)
+                        {
+                            <tr class="row m-2">
+                                <td class="d-inline-block col-md-2 col-4">
+                                    <a asp-controller="Movies" asp-action="Edit" asp-route-id="@movie.Id">@movie.Number</a>
+                                </td>
+                                <td class="d-inline-block col-md-6 col-6 hidden-md-down">
+                                    <a asp-controller="Movies" asp-action="Edit" asp-route-id="@movie.Id">@movie.Name</a>
+                                </td>
+                                <td class="d-inline-block col-md-2 col-4">@movie.FormattedPrice</td>
+                                <td class="d-inline-block col-md-2 col-4">
+                                    <a asp-controller="Movies" asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning btn-small">Edit</a>
+                                    
+                                    @if (User.IsInRole(WebsiteRole.Admin))
+                                    {
+                                        <a asp-controller="Movies" asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger btn-small">Delete</a>
+
+                                    }
+                                </td>
+                            </tr>
+                            
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container"> 
+    @if(pager.TotalPages>0){
+        <ul class="pagination justify-content-end">
+            @if(pager.CurrentPage > 1){
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Movies" asp-action="Index" asp-route-Status="@Model.Status" asp-route-SearchString="@Model.search"  asp-route-pg="1">First</a>
+                </li>
+                 <li class="page-item">
+                    <a class="page-link" asp-controller="Movies" asp-action="Index" asp-route-Status="@Model.Status" asp-route-SearchString="@Model.search" asp-route-pg="@(pager.CurrentPage - 1 )">Previous</a>
+                </li>
+            }
+
+            @for (var pge = pager.StartPage; pge <+ pager.EndPage; pge++)
+            {
+                <li class="page-item @(pge==pager.CurrentPage ? "active": "")">
+                    <a class="page-link" asp-controller="Movies" asp-action="Index" asp-route-Status="@Model.Status" asp-route-SearchString="@Model.search" asp-route-pg="@pge">@pge</a>
+                </li>
+            }
+            
+            @if(pager.CurrentPage<pager.TotalPages)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="Movies" asp-action="Index" asp-route-Status="@Model.Status" asp-route-SearchString="@Model.search" asp-route-pg="@(pager.CurrentPage + 1)">Next</a>
+                </li>
+                 <li class="page-item">
+                    <a class="page-link" asp-controller="Movies" asp-action="Index" asp-route-Status="@Model.Status" asp-route-SearchString="@Model.search" asp-route-pg="@(pager.TotalPages)">last</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

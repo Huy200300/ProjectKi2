@@ -1,0 +1,138 @@
+﻿@model JORDAN_2T.ApplicationCore.ViewModels.Admin.MovieDetailsVM
+@{
+    ViewBag.Title = "Edit Movie";
+}
+
+<div class="container">
+    <section class="mt-5">
+        <header>
+            <h1 class="heading-line mb-5">@String.Format("Edit Movie #{0}", Model.Number)</h1>
+        </header>
+    </section>
+    @{
+        var detailTab = "active show";
+        var photoTab = "";
+        if (Model.ShowPhoto)
+        {
+            detailTab = "";
+            photoTab = "active show";
+        }
+    }
+    <section class="item-details">
+        <ul class="nav nav-tabs" id="detailCards">
+            <li class="nav-item">
+                <button class="nav-link @detailTab" id="detail-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" aria-controls="details" aria-selected="false">Details</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link @photoTab" id="image-tab" data-bs-toggle="tab" data-bs-target="#images" type="button" aria-controls="images" aria-selected="true">Photos</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="itemTabContent">
+            <div class="tab-pane fade show @detailTab" id="details" aria-labelledby="detail-tab">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    <div class="card-block">
+                        <input type="hidden" id="MovieId" asp-for="MovieId" />
+                        <input type="hidden" asp-for="Number" />
+                          <div class="form-group p-3">
+                            <label  class="control-label mb-1">Category</label>
+                            <select  asp-for="CategoryId" id="lstCategoryId" asp-items="@Model.CategoryList" class="form-control" onchange="fillSubCategories(this, 'lstSubCategory')">
+                                <option value="0">--- Select Category ---</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-3">
+                            <label  class="control-label mb-1">Sub Category</label>
+                            <select asp-for="SubCategoryId" id="lstSubCategory"   asp-items="@Model.SubCategoryList" class="form-control"></select>
+                           
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Name" class="control-label mb-1"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter a name for the item"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Description" class="control-label mb-1" placeholder="Enter the description for the item"></label>
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter a description" rows="6"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Price" class="control-label mb-1"></label>
+                            <input asp-for="Price" class="form-control" placeholder="Enter a price"/>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                       
+                        <div class="form-group p-3">
+                            <label asp-for="Status" class="control-label mb-1"></label>
+                            <select asp-for="Status" asp-items="@Model.MovieStatusList" class="form-control"></select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card-footer p-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-controller="Movies" asp-action="Index" asp-route-status="@Model.OriginalStatus" class = "btn btn-secondary">Cancel</a>
+                    </div>
+                }
+            </div>
+            <div class="tab-pane fade @photoTab" id="images" aria-labelledby="image-tab">
+                <div class="card-block">
+                    <div class="row">
+                        @foreach (Photo image in Model.movieImages)
+                        {
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class=" text-center">
+                                    <div class="p-3">
+                                        @{ 
+                                            var myUrl = String.Format("{0}", image.LinkToSmallImage); 
+        
+                                        }
+                                        <img src="/@Url.Content(@myUrl)" height="142" alt="@Model.Name">
+                                        <a asp-controller="Photo" asp-action="DeleteImage" asp-route-movieId="@Model.MovieId" asp-route-imageid=" @image.Id">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                           
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <form asp-action="UploadFiles" asp-controller="Photo" method="post" enctype="multipart/form-data" asp-antiforgery="true">
+                    <div class="card-footer p-3">
+                        <input type="hidden" asp-for="MovieId" />
+                        <!-- Want one button to both browse file and submit form. Using some javascript and display: none to do it. -->
+                        <!-- Note that the onchange event could be blocked. Some browsers do not allow form to be submitted using javascript. -->
+                        <!-- Test the upload button on the browsers you expect to be used. Otherwise, you may have to have two buttons. -->
+                        <!-- A nice thing about having two buttons is that your 'Save' button could save the info on both the Item tab and Photo tab. -->
+                        <input type="file" multiple style="display: none;" id="files" name="files" onchange="this.form.submit();" />
+                        <input type="button" value="Upload..." class="btn btn-primary" onclick="document.getElementById('files').click();" />
+                        <a asp-controller="Movies" asp-action="Index" asp-route-status="@Model.OriginalStatus" class = "btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p class="my-3">Note: You must set the status of the item to 'Active' for it to be visible to all users. Draft - Item not ready to be published. Archive - Item no longer availaible.</p>
+    </section>
+</div>
+@* <script type="text/javascript">
+    function fillSubCategories(countryList, subCategoryId) {
+    var list = $("#" + subCategoryId);
+    list.empty();
+
+    var selectedCategory = countryList.options[countryList.selectedIndex].value;
+    if (selectedCategory != null && selectedCategory != '') {
+        $.getJSON("/Admin/Movies/GetSubCategoriesByCategory", {categoryId: selectedCategory}, function(subCategories) {
+            if (subCategories != null && !jQuery.isEmptyObject(subCategories)) {
+                $.each(subCategories, function(index, subCategory) {
+                    list.append($('<option/>', {
+                        value: subCategory.value,
+                        text: subCategory.text
+                    }));
+                });
+            }
+        });
+    }
+    return;
+}
+</script> *@

@@ -1,0 +1,87 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.Admin.AdminMovieListVM
+@{
+    ViewBag.Title = "Edit Movie";
+}
+
+<div class="container">
+    <section class="mt-5">
+        <header>
+            <h1 class="heading-line mb-5">@String.Format("Edit Movie #{0}", Model.Number)</h1>
+        </header>
+    </section>
+   
+    
+    <section class="item-details">
+       
+        <div class="" id="">
+            <div class="" id="details" aria-labelledby="detail-tab">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    <div class="card-block">
+                        <input type="hidden" id="Id" asp-for="Id" />
+                        <input type="hidden" asp-for="Number" />
+                          <div class="form-group p-3">
+                            <label  class="control-label mb-1">Category</label>
+                            <select  asp-for="CategoryId" id="lstCategoryId" asp-items="@Model.CategoryList" class="form-control" onchange="fillSubCategories(this, 'lstSubCategory')">
+                                <option value="0">--- Select Category ---</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-3">
+                            <label  class="control-label mb-1">Sub Category</label>
+                            <select asp-for="SubCategoryId" id="lstSubCategory"   asp-items="@Model.SubCategoryList" class="form-control"></select>
+                           
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Name" class="control-label mb-1"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter a name for the item"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Description" class="control-label mb-1" placeholder="Enter the description for the item"></label>
+                            <textarea asp-for="Description" class="form-control" placeholder="Enter a description" rows="6"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Price" class="control-label mb-1"></label>
+                            <input asp-for="Price" class="form-control" placeholder="Enter a price"/>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                       
+                        @* <div class="form-group p-3">
+                            <label asp-for="Status" class="control-label mb-1"></label>
+                            <select asp-for="Status" asp-items="@Model.StatusList" class="form-control"></select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div> *@
+                    </div>
+                    <div class="card-footer p-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+            
+        </div>
+        <p class="my-3">Note: You must set the status of the item to 'Active' for it to be visible to all users. Draft - Item not ready to be published. Archive - Item no longer availaible.</p>
+    </section>
+</div>
+@* <script type="text/javascript">
+    function fillSubCategories(countryList, subCategoryId) {
+    var list = $("#" + subCategoryId);
+    list.empty();
+
+    var selectedCategory = countryList.options[countryList.selectedIndex].value;
+    if (selectedCategory != null && selectedCategory != '') {
+        $.getJSON("/Admin/Movies/GetSubCategoriesByCategory", {categoryId: selectedCategory}, function(subCategories) {
+            if (subCategories != null && !jQuery.isEmptyObject(subCategories)) {
+                $.each(subCategories, function(index, subCategory) {
+                    list.append($('<option/>', {
+                        value: subCategory.value,
+                        text: subCategory.text
+                    }));
+                });
+            }
+        });
+    }
+    return;
+}
+</script> *@

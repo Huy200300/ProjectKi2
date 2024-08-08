@@ -1,0 +1,44 @@
+@using Microsoft.AspNetCore.Identity
+@using JORDAN_2T.ApplicationCore.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="~/Admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
+            <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark">
+                @UserManager.GetUserName(User)!
+                </span> <i data-feather="chevron-down" class="svg-icon"></i></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+            
+            <a id="manage" class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            <i data-feather="user"
+                    class="svg-icon mr-2 ml-1"></i>
+                My Profile</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="javascript:void(0)">
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <i data-feather="power"
+                    class="svg-icon mr-2 ml-1"></i><button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+        </form>
+                </a>
+            <div class="dropdown-divider"></div>
+        </div>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>
+}
+</ul>

@@ -1,0 +1,31 @@
+@using Microsoft.AspNetCore.Identity
+@using JORDAN_2T.ApplicationCore.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    
+        <a class="header-icon-user" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" >
+            
+           <i class="fal fa-user"></i>
+                @* @UserManager.GetUserName(User)! *@
+              
+        </a>
+        
+}
+else
+{
+ 
+       <a class="header-icon-user" asp-area="Identity" asp-page="/Account/Login" title="Manage">
+                                    <i class="fal fa-user"></i>
+                                </a>
+    
+   
+}
+
+
+
+

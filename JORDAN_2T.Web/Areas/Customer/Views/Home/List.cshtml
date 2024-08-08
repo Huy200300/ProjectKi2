@@ -1,0 +1,97 @@
+﻿@model JORDAN_2T.ApplicationCore.ViewModels.HomeMovieListVM
+
+@{
+    ViewBag.Title = "Product";
+}
+
+
+<section class="home-tab-product pb-30">
+        <div class="container">
+            <div class="inner">
+                @* <div class="section-heading text-center">
+                    <h2 class="section-title">
+                        <span>@Model.PageTitle</span>
+                    </h2>
+                    <div class="desc"></div>
+                </div> *@
+
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-end">
+                        @using (Html.BeginForm("List", "Home", FormMethod.Post))
+                        {
+                            <label class="visually-hidden">Sort By</label>
+                            @Html.DropDownListFor(vm => vm.SortBy, Model.Sorts, new { @class = "form-select", onchange = @"form.submit();" })
+                        }
+                    </div>
+                </div>
+
+                <div class="htp-tabs-wrapper">
+                    <div class="htp-tablinks text-center">
+
+                    </div>
+                    <div class="htp-tabcontents">
+                        <div class="htp-tabcontent active" data-id="htp-tab-1">
+                            <div class="row htp-tabcontents-slide-mb">
+                                @foreach (var movie in Model.Movies)
+                                {
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                                        
+                                        <div class="product-item">
+                                            <a asp-action="Details" asp-route-movieId="@movie.Id" style="display: flex;">
+                                                <div class="product-img ">
+                                                    <div class="tag-new-tragop text-center">
+                                                        <span>Trả góp 0%</span>
+                                                    </div>
+                                                    
+                                                        <picture>
+                                                            @{
+                                                                var myUrl = "images/product-sample-thumb.jpg";
+                                                                var myAlt = "Product Sample";
+                                                            }
+                                                            @if (movie.Photos.Count > 0)
+                                                            {
+                                                                myUrl = String.Format("{0}", movie.Photos.ElementAt(0).LinkToSmallImage);
+                                                                myAlt = movie.Name;
+                                                            }
+                                                            <img class="dt-width-100 lazyloaded" width="480" height="480" src="/@Url.Content(@myUrl)" alt="@myAlt">
+                                                        </picture>
+                                                    
+                                                    <div class="button-add d-none d-md-flex">
+                                                        <button type="button" class="btnQuickView quick-view" data-handle="/products/giay-nike-air-jordan-1-low-aluminum-dc0774-141" data-tooltip="Xem nhanh"><span><i class="iccl iccl-eye"></i></span></button>
+                                                        <button href="" data-tooltip="Mua nhanh" onclick="add_to_cart('1093034542');"><i class="iccl iccl-cart"></i></button>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                             <a asp-action="Details" asp-route-movieId="@movie.Id">
+                                                <div class="product-detail clearfix">
+                                                    <h3 class="pro-name">
+                                                        @movie.Name
+                                                    </h3>
+                                                    <div class="box-pro-prices">
+                                                        <p class="pro-price">
+                                                            <span class="current-price">@movie.FormattedPrice</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="product-swatch"></div>
+                                                    <div class="tag-new-tick text-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35.288" height="35.406" viewBox="0 0 35.288 35.406">
+                                                            <g id="Group_283" data-name="Group 283" transform="translate(122.491 -27.799)">
+                                                                <path id="Path_96" data-name="Path 96" d="M-63.212,81.765h-.017a.8.8,0,0,0-.381.1l-.036.02c-.035.02-.071.042-.105.066a1.681,1.681,0,0,0-.264.212q-2.123,2.107-4.23,4.23h0q-2.2,2.2-4.385,4.4c-.388.393-.621.379-.992-.009-1-1.046-2.037-2.06-3.067-3.078A1,1,0,0,0-78.22,87.6a.985.985,0,0,0,.065,1.533q2.107,2.123,4.23,4.23a1,1,0,0,0,1.618,0q3.729-3.719,7.445-7.452,1.081-1.065,2.145-2.147l.181-.182a.12.12,0,0,0,.028-.041.967.967,0,0,0,.027-1.441A1,1,0,0,0-63.212,81.765Z" transform="translate(-33.937 -41.684)" fill="#fff"></path>
+                                                                <path id="Path_97" data-name="Path 97" d="M-88.474,42.291a25.407,25.407,0,0,1-1.63-2.355A10.281,10.281,0,0,1-91.1,36.03c-.429-2.846-1.468-3.9-4.315-4.339-.724-.111-1.445-.239-2.167-.363-1.645-.281-2.86-1.345-4.15-2.275a5.925,5.925,0,0,0-2.509-1.2,4.923,4.923,0,0,0-3.744,1.2c-.761.546-1.508,1.117-2.3,1.606a10,10,0,0,1-3.9,1.023c-2.974.449-3.991,1.456-4.434,4.408-.131.872-.286,1.743-.486,2.6a10.042,10.042,0,0,1-2.167,3.647c-1.573,2.082-1.637,3.84-.152,5.984.256.37.512.742.8,1.087a8,8,0,0,1,1.849,4.337c.064.6.179,1.189.3,1.778a3.9,3.9,0,0,0,3.586,3.55,7.251,7.251,0,0,0,.833.139,10.542,10.542,0,0,1,6.1,2.617,5.646,5.646,0,0,0,3.17,1.381,16.517,16.517,0,0,0,2.036-.745,11.1,11.1,0,0,0,1.86-1.256A8.356,8.356,0,0,1-96.6,59.367a21.51,21.51,0,0,0,2.379-.445,3.608,3.608,0,0,0,2.863-2.849,10.155,10.155,0,0,0,.312-1.6,10.5,10.5,0,0,1,2.585-5.934C-86.754,46.4-86.81,44.469-88.474,42.291Zm-7.973-.435a.12.12,0,0,1-.028.041l-.181.182q-1.066,1.08-2.145,2.147-3.719,3.73-7.445,7.452a1,1,0,0,1-1.618,0q-2.124-2.105-4.23-4.23a.985.985,0,0,1-.065-1.533,1,1,0,0,1,1.534.107c1.03,1.018,2.066,2.031,3.067,3.078.371.388.6.4.992.009q2.186-2.209,4.385-4.4h0q2.105-2.124,4.23-4.23a1.681,1.681,0,0,1,.264-.212c.035-.024.07-.046.105-.066l.036-.02a.8.8,0,0,1,.381-.1h.017a1,1,0,0,1,.729.334A.967.967,0,0,1-96.446,41.856Z" transform="translate(0 0)" fill="#3665f3"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                             </a>
+                                         </div>
+                                        
+                                    </div>                                   
+                                }                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

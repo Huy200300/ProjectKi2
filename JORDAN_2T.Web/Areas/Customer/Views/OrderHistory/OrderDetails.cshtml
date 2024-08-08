@@ -1,0 +1,89 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.OrderHistoryVM
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-dark text-light ml-0">
+				<div class="row">
+					<div class="col-6 pt-1">
+						<i class="fa fa-shopping-cart"></i>&nbsp;Order History
+					</div>
+					<div class="col-6 text-end">
+						<a asp-area="Customer" asp-controller="Home" asp-action="Index"
+							class="btn btn-outline-info btn-sm">Continue Shopping</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				@foreach (var item in Model.Order)
+				{
+					
+				
+				<div class="col-md-6 col-sm-6 text-left">
+					<h4><strong>Client</strong> Details</h4>
+					<ul class="list-unstyled">
+						<li><strong>Name:</strong> @item.Name</li>
+						<li><strong>Phone Number:</strong> @item.PhoneNumber</li>
+						<li><strong>Address:</strong> @item.Address</li>
+						<li><strong>City:</strong> @item.City</li>
+						<li><strong>Order Date</strong> @item.OrderDate</li>
+					</ul>
+				</div>
+
+				<div class="col-md-6 col-sm-6 text-right">
+					<h4><strong>Payment</strong> Details</h4>
+					<ul class="list-unstyled">
+						<li><strong>PaymentDate:</strong> @item.PaymentDate</li>
+						<li><strong>ShippingDate:</strong> @item.ShippingDate</li>
+						<li><strong>OrderStatus:</strong> @item.OrderStatus</li>
+						<li><strong>PaymentStatus:</strong> @item.PaymentStatus</li>
+						<li><strong>OrderTotal:</strong> @item.OrderTotal</li>
+					</ul>
+
+				</div>
+				}
+
+			</div>
+			<div class="card-block">
+                <table class="table">
+                    <thead>
+                        <tr class="row m-2">
+                            <th class="d-inline-block col-md-2 col-2">images</th>
+                            <th class="d-inline-block col-6 hidden-md-down ">Name</th>
+                            <th class="d-inline-block col-md-2 col-2">Quantity</th>
+                            <th class="d-inline-block col-md-2 col-2">Price</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                           @foreach (var item in Model.OrderDetails)
+					{
+						<tr class="row m-2">
+
+							 <td class="d-inline-block col-md-2 col-4">
+								@{
+									var myUrl = "images/product-sample-thumb.jpg";
+								}
+								@if (item.Movie.Photos.Count > 0)
+								{
+									myUrl = String.Format("{0}", item.Movie.Photos.ElementAt(0).LinkToSmallImage);
+								}
+								<img src="/@Url.Content(@myUrl)" width="60%" class="rounded">
+                             </td>
+							 <td class="d-inline-block col-6 hidden-md-down">
+								<strong>@item.Movie.Name</strong>
+                             </td>
+							 <td class="d-inline-block col-md-2 col-4">
+									<strong>@item.Price.ToString()
+                             </td>
+                              <td class="d-inline-block col-md-2 col-4">@item.Quantity</td>
+						</tr>
+						<hr>
+					}
+                        
+                    </tbody>
+                </table>
+            </div>
+		</div>
+	</div>

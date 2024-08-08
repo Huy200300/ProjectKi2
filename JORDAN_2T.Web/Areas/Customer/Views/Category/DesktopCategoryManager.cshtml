@@ -1,0 +1,42 @@
+@using JORDAN_2T.Web.Areas.Identity.Pages.Account.Manage
+@model IndexModel
+@* 
+<div class="header-navbar-menu"></div>
+<div class="wrap-logo wrap-logo-sticky">
+
+    <a asp-controller="Home" asp-action="Index" aria-label="Hệ thống phân phối Air Jordan chính hãng">
+        <img src="//theme.hstatic.net/200000384421/1000955298/14/logo.png?v=20" alt="Hệ thống phân phối Air Jordan chính hãng" class="img-responsive logoimg">
+    </a>
+
+</div> *@
+<div class="header-menu-desktop menu-desktop d-none d-lg-block header-main">
+    <div class="navbar-mainmenu" >
+        <div id="nav">
+            <nav class="main-nav">
+                <ul class="clearfix">
+                    <li class="active dropdown">
+                        <a asp-area="Customer"  asp-controller="Home" asp-action="Index" title="Trang chủ">Trang chủ</a>
+                    </li>
+                    @foreach (var item in Model.Input.categories)
+                    {
+                        <li class=" dropdown">
+                        
+                            <a asp-area="Customer" asp-controller="Home" asp-action="Category" asp-route-Id="@item.Id" title="@item.Name">@item.Name<i class="fal fa-chevron-down" aria-hidden="true"></i></a>
+                            
+                                    <ul class="sub_menu">
+                                        @foreach (var items in Model.Input.subCategories)
+                                        {
+                                            @if (items.CategoryId==item.Id){
+                                                <li class="">
+                                                    <a asp-area="Customer" asp-controller="Home" asp-action="SubCategory" asp-route-Id="@items.Id" title="Air Jordans">@items.Name	</a>
+                                                </li>
+                                            }
+                                        }
+                                    </ul>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

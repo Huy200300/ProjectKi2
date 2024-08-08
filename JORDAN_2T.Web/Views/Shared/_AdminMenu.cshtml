@@ -1,0 +1,132 @@
+@using JORDAN_2T.ApplicationCore.Utilities
+
+
+<nav class="sidebar-nav">
+     @if (User.IsInRole(WebsiteRole.Admin)){
+        <ul id="sidebarnav">
+    
+            <li class="nav-small-cap"><span class="hide-menu">Manager</span></li>
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Users </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-area="Identity" asp-page="/Account/Register" class="sidebar-link"><span
+                                class="hide-menu">Create User
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a asp-controller="Users" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> User
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Category </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="Category" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Category
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a asp-controller="Category" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Category
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Sub Category </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="SubCategory" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Sub Category
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a  asp-controller="SubCategory" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Sub Category
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu"> Product</span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="Movies" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Product
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a  asp-controller="Movies" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Product
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link sidebar-link" asp-controller="Orders" asp-action="Index" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span
+                        class="hide-menu">Order
+                    </span></a>
+            </li>
+            <li class="list-divider"></li>
+        </ul>
+    }else if(User.IsInRole(WebsiteRole.Managers))
+    {
+        <ul id="sidebarnav">
+    
+            <li class="nav-small-cap"><span class="hide-menu">Manager</span></li>
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Category </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="Category" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Category
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a asp-controller="Category" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Category
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu">Sub Category </span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="SubCategory" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Sub Category
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a  asp-controller="SubCategory" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Sub Category
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                        class="hide-menu"> Product</span></a>
+                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                    <li class="sidebar-item"><a  asp-controller="Movies" asp-action="Create" class="sidebar-link"><span
+                                class="hide-menu">Create Product
+                            </span></a>
+                    </li>
+                    
+                        <li class="sidebar-item"><a  asp-controller="Movies" asp-action="Index" class="sidebar-link"><span
+                                class="hide-menu"> Product
+                            </span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li class="sidebar-item"> <a class="sidebar-link sidebar-link" asp-controller="Orders" asp-action="Index" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span
+                        class="hide-menu">Order
+                    </span></a>
+            </li>
+            <li class="list-divider"></li>
+        </ul>
+    }
+</nav>

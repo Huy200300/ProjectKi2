@@ -1,0 +1,41 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.SubCategoryVM
+@{
+    ViewBag.Title = "Edit SubCategory";
+}
+
+<div class="container">
+     <section class="mt-5">
+        <header>
+            <h1 class="heading-line mb-5">@String.Format("Edit SubCategory #{0}", Model.Id)</h1>
+        </header>
+    </section>
+    <section class="item-details">
+        <div >
+            <div class="tab-pane fade show " id="details" aria-labelledby="detail-tab">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    <div class="card-block">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group p-3">
+                            <label class="control-label mb-1">Category</label>
+                            <select asp-for="CategoryId" asp-items="@Model.ListCategory" class="form-control"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group p-3">
+                            <label asp-for="Name" class="control-label mb-1"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter a name for the item"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card-footer p-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-controller="SubCategory" asp-action="Index"  class = "btn btn-secondary">Cancel</a>
+                    </div>
+                }
+            </div>
+            
+        </div>
+        <p class="my-3">Note: You must set the status of the item to 'Active' for it to be visible to all users. Draft - Item not ready to be published. Archive - Item no longer availaible.</p>
+    </section>
+</div>

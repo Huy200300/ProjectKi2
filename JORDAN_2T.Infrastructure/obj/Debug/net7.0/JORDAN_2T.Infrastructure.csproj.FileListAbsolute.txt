@@ -1,0 +1,34 @@
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.deps.json
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.runtimeconfig.json
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.pdb
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.AssemblyReference.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.AssemblyInfoInputs.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.AssemblyInfo.cs
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.CoreCompileInputs.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.CopyComplete
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\refint\JORDAN_2T.Infrastructure.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.pdb
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.genruntimeconfig.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\ref\JORDAN_2T.Infrastructure.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.deps.json
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.runtimeconfig.json
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.Infrastructure.pdb
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.AssemblyReference.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.AssemblyInfoInputs.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.AssemblyInfo.cs
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.CoreCompileInputs.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.csproj.CopyComplete
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\refint\JORDAN_2T.Infrastructure.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.pdb
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\JORDAN_2T.Infrastructure.genruntimeconfig.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.Infrastructure\obj\Debug\net7.0\ref\JORDAN_2T.Infrastructure.dll

@@ -1,0 +1,369 @@
+﻿@model JORDAN_2T.ApplicationCore.ViewModels.ShoppingCartVM
+<div class="title-infor-account text-center"><h1 >Giỏ hàng của bạn </h1></div>
+@* <form method="post">
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-dark text-light ml-0">
+				<div class="row">
+					<div class="col-6 pt-1">
+						<i class="fa fa-shopping-cart"></i>&nbsp; Shopping Cart
+					</div>
+					<div class="col-6 text-end">
+						<a asp-area="Customer" asp-controller="Home" asp-action="Index"
+							class="btn btn-outline-info btn-sm">Continue Shopping</a>
+					</div>
+				</div>
+			</div>
+			@if (Model.Order.OrderTotal == 0)
+			{
+				<div class="card-body">
+					<p class="text-center"><strong>Your Cart Is Empty!</strong></p>
+				</div>
+			}
+			else
+			{
+				<div class="card-body">
+					@foreach (var item in Model.CartList)
+					{
+						<div class="row">
+
+							<div class="product_image">
+								@{
+									var myUrl = "images/product-sample-thumb.jpg";
+								}
+								@if (item.Movie.Photos.Count > 0)
+								{
+									myUrl = String.Format("{0}", item.Movie.Photos.ElementAt(0).LinkToSmallImage);
+								}
+								<img src="/@Url.Content(@myUrl)" width="20%" class="rounded">
+							</div>
+							<div class="col-12 col-lg-6 pt-2">
+								<strong>@item.Movie.Name</strong>
+							</div>
+							<div class="col-12 col-lg-5 text-center row pt-1">
+								<div class="col-4 text-md-right pt-1">
+									<strong>@item.Price.ToString()<span class="text-muted">&nbsp;x&nbsp;</span>@item.Quantity
+									</strong>
+								</div>
+								<div class="col-6 col-sm-4 col-lg-6">
+									<div class="w-75 btn-group" role="group">
+										<a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-warning">
+											<i class="fa fa-minus"></i>
+										</a> &nbsp;
+										<a asp-action="plus" asp-route-cartId="@item.Id" class="btn btn-primary">
+											<i class="fa fa-plus"></i>
+										</a> 
+										
+									</div>
+								</div>
+								<div class="col-2 col-sm-4 col-lg-2 text-right">
+									<a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-danger">
+										<i class="fa fa-trash"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						<hr>
+					}
+					<div class="row justify-content-end">
+						<div class="col-6 col-md-6 col-lg-3">
+							<ul class="list-group">
+								<li class="list-group-item d-flex justify-content-between bg-light">
+									<span class="text-info">Tổng (VNĐ): </span>
+									<strong class="text-info">@Model.Order.FormattedPrice</strong>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+				<div class="card-footer">
+					<div class="row justify-content-end">
+						<div class="col-6 col-md-6 col-lg-3">
+							<a asp-action="Checkout" class="btn btn-success form-control">Checkout</a>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</form> *@
+
+
+<div class="row wrapbox-content-cart">
+	<div class="col-12 contentCart-detail">
+		
+		<div class="cart-container">
+			<div class="cart-col-left">
+				<div class="main-content-cart">
+					<form  method="post" id="cartformpage">
+					@if (Model.Order.OrderTotal == 0)
+			{
+				<div class="card-body">
+					<p class="text-center"><strong>Your Cart Is Empty!</strong></p>
+				</div>
+			}
+			else
+			{
+					@foreach (var item in Model.CartList)
+					{
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<table class="table-cart">
+									<thead>
+										<tr>
+											<th class="image">&nbsp;</th>
+											<th class="item">Tên sản phẩm</th>
+											<th class="item">Giá</th>
+											<th class="item">Số lượng</th>
+											@* <th class="item">Thành tiền</th> *@
+											<th class="remove">&nbsp;</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+
+										<tr class="line-item-container" data-variant-id="1093034542">
+											<td class="image">
+													<div class="product_image">
+														@{
+															var myUrl = "images/product-sample-thumb.jpg";
+														}
+														@if (item.Movie.Photos.Count > 0)
+														{
+															myUrl = String.Format("{0}",
+															item.Movie.Photos.ElementAt(0).LinkToSmallImage);
+														}
+														<img src="/@Url.Content(@myUrl)" width="100%" class="rounded">
+
+													</div>
+											</td>
+											<td class="item" width="420px">
+												<h3>@item.Movie.Name</h3>
+												<p class="variant">
+													<span class="variant_title">Liên Hệ Order</span>
+												</p>
+											</td>
+											<td class="item">
+												<p>
+													<span class="price">@item.Price.ToString()đ</span>
+												</p>
+											</td>
+											<td class="qty">
+												<div class="">
+														<a asp-action="minus" asp-route-cartId="@item.Id"
+															class="btn btn-warning">
+															<i class="fa fa-minus"></i>
+														</a> <span class="btn btn-warning">@item.Quantity</span>
+														<a asp-action="plus" asp-route-cartId="@item.Id"
+															class="btn btn-primary">
+															<i class="fa fa-plus"></i>
+														</a>
+												</div>
+											</td>
+											@* <td class="item">
+												<p class="">
+													<span class="line-item-total price"><span class="d-md-none">Thành
+															tiền: </span>@Model.Order.FormattedPrice</span>
+												</p>
+											</td> *@
+											<td class="remove">
+												<a asp-action="remove" asp-route-cartId="@item.Id" class="cart">
+													<img
+														src="//theme.hstatic.net/200000384421/1000955298/14/ic_close.png?v=23" /></a>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					}
+					<div class="row">
+							<div class="col-12 col-md-5 col-lg-7">
+								<div class="sidebox-group">
+									<h3>Ghi chú đơn hàng</h3>
+									<div class="checkout-note clearfix">
+										<textarea id="note" name="note" rows="4" placeholder="Ghi chú"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-7 col-lg-5">
+								<div class="sidebox-order">
+									<div class="sidebox-order-inner">
+										<div class="sidebox-order_title">
+											<h3>Thông tin đơn hàng</h3>
+										</div>
+										<div class="sidebox-order_total">
+											<p>Tổng tiền:
+												@* <span class="total-price">@Model.Order.FormattedPrice</span> *@
+											</p>
+										</div>
+										<div class="sidebox-order_text">
+											<p>Phí vận chuyển sẽ được tính ở trang thanh toán.<br>
+												Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
+										</div>
+										<div class="sidebox-order_action">
+											<a asp-action="Checkout" class="btn btn-dark btncart-checkout">THANH TOÁN</a>
+											<p class="link-continue">
+												<a href="/">
+													<i class="fa fa-reply"></i> Tiếp tục mua hàng
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="cart-buttons hidden">
+									<button type="submit" id="update-cart" class="btn-update button dark hidden"
+										name="update" value="">Cập nhật</button>
+									<a type="submit" id="checkout" class="btn-checkout button dark hidden"
+										name="checkout" value="">Thanh toán</a>
+								</div>
+
+							</div>
+						</div>	 
+				}
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<!-- End cart -->
+	</div>
+</div>
+
+@* <div class="row wrapbox-content-cart">
+	<div class="col-12 contentCart-detail">
+
+		<div class="cart-container">
+			<div class="cart-col-left">
+				<div class="main-content-cart">
+					<form action="/cart" method="post" id="cartformpage">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 col-xs-12">
+								<table class="table-cart">
+									<thead>
+										<tr>
+											<th class="image">&nbsp;</th>
+											<th class="item">Tên sản phẩm</th>
+											<th class="item">Giá</th>
+											<th class="item">Số lượng</th>
+											<th class="item">Thành tiền</th>
+											<th class="remove">&nbsp;</th>
+										</tr>
+									</thead>
+									<tbody>
+
+
+
+										<tr class="line-item-container" data-variant-id="1093034542">
+											<td class="image">
+												<div class="product_image">
+													<a href="/products/giay-nike-air-jordan-1-low-aluminum-dc0774-141">
+														<img src="  //product.hstatic.net/200000384421/product/air-jordan-1-low-aluminum-w_acd6_d0873f1007c546399b2b2874849a06c5_medium.png"
+															alt="Giày Nike Air Jordan 1 Low 'Aluminum' DC0774-141" />
+													</a>
+
+												</div>
+											</td>
+											<td class="item" width="420px">
+
+												<h3><a href="/products/giay-nike-air-jordan-1-low-aluminum-dc0774-141">Giày
+														Nike Air Jordan 1 Low 'Aluminum' DC0774-141 </a></h3>
+
+
+												<p class="variant">
+
+													<span class="variant_title">Liên Hệ Order</span>
+
+												</p>
+
+												<p>
+
+												</p>
+
+
+											</td>
+											<td class="item">
+												<p>
+													<span class="price">5,500,000₫</span>
+
+											</td>
+											<td class="qty">
+												<div class="qty quantity-partent qty-click clearfix">
+													<button type="button" class="qtyminus qty-btn">-</button> <input
+														type="text" size="4" name="updates[]" min="1"
+														id="updates_1093034542" data-price="550000000" value="1"
+														class="tc line-item-qty item-quantity bg-white" />
+													<button type="button" class="qtyplus qty-btn">+</button>
+												</div>
+											</td>
+											<td class="item">
+												<p class="">
+													<span class="line-item-total price"><span class="d-md-none">Thành
+															tiền: </span>5,500,000₫</span>
+												</p>
+											</td>
+											<td class="remove">
+												<a href="/cart/change?line=1&quantity=0" class="cart">
+													<img
+														src="//theme.hstatic.net/200000384421/1000955298/14/ic_close.png?v=23" /></a>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-5 col-lg-7">
+								<div class="sidebox-group">
+									<h3>Ghi chú đơn hàng</h3>
+									<div class="checkout-note clearfix">
+										<textarea id="note" name="note" rows="4" placeholder="Ghi chú"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-md-7 col-lg-5">
+								<div class="sidebox-order">
+									<div class="sidebox-order-inner">
+										<div class="sidebox-order_title">
+											<h3>Thông tin đơn hàng</h3>
+										</div>
+										<div class="sidebox-order_total">
+											<p>Tổng tiền:
+												<span class="total-price">5,500,000₫</span>
+											</p>
+										</div>
+										<div class="sidebox-order_text">
+											<p>Phí vận chuyển sẽ được tính ở trang thanh toán.<br>
+												Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</p>
+										</div>
+										<div class="sidebox-order_action">
+											<a class="btn btn-dark btncart-checkout">THANH TOÁN</a>
+											<p class="link-continue">
+												<a href="/collections/all">
+													<i class="fa fa-reply"></i> Tiếp tục mua hàng
+												</a>
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="cart-buttons hidden">
+									<button type="submit" id="update-cart" class="btn-update button dark hidden"
+										name="update" value="">Cập nhật</button>
+									<button type="submit" id="checkout" class="btn-checkout button dark hidden"
+										name="checkout" value="">Thanh toán</button>
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- End cart -->
+	</div>
+</div> *@

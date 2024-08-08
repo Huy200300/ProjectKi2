@@ -1,0 +1,244 @@
+﻿@model JORDAN_2T.ApplicationCore.ViewModels.CartItemDetailsVM
+
+@{
+    ViewBag.Title = "Movie Details";
+}
+
+<form method="post">
+    <div id="product" class="productDetail-page">
+        <div class="breadcrumb-shop">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
+                        <ol class="breadcrumb breadcrumb-arrows" itemscope="" itemtype="">
+                            <li itemprop="itemListElement" itemscope="" itemtype="">
+                                <a itemprop="item" asp-action="Index"><span itemprop="name">Trang chủ</span></a>
+                                <meta itemprop="position" content="1">
+                            </li>
+
+                            <li itemprop="itemListElement" itemscope="" itemtype="">
+                                <a href="" target="_self" itemprop="item">
+                                    <span itemprop="name">Giày Sneaker</span>
+                                </a>
+                                <meta itemprop="position" content="2">
+                            </li>
+                            <li class="active" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                                <span itemprop="item" content="">
+				                        <span itemprop="name">@Model.Name</span>
+                                </span>
+                                <meta itemprop="position" content="3">
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail-wrapper pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-box-content">
+                            <div class="row product-detail-main">
+                                <div class="col-lg-6 col-sm-12 col-xs-12 product-content-img">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-indicators">
+                                                @for (int i = 0; i < Model.MovieImages.Count(); i++)
+                                                {
+                                                    
+                                                    @if (i == 0)
+                                                    {
+                                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i"
+                                                            class="active" aria-current="true" aria-label="Slide @(i+1)"></button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i"
+                                                            aria-label="Slide @(i+1)"></button>
+                                                    }
+                                                }
+                                            </div>
+                                            <div class="carousel-inner ">
+                                                @{
+                                                    var state = "active";
+                                                }
+                                                @foreach (var photo in Model.MovieImages)
+                                                {
+                                                        <div class="carousel-item @state" style="width: 570px;">
+                                                            
+                                                            @{
+                                                                state = "";
+                                                            }
+                                                            <img src="/@Url.Content(@photo)" class="d-block w-100 lazyloaded" alt=@Model.Number >
+                                                        </div>
+                                                    
+                                                }
+                                            </div>
+                                            <button class="carousel-control-prev" type="button"
+                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
+                                    <p class="product-type hide">Nike</p>
+                                    <div class="product-title">
+                                        <h1>@Model.Name</h1>
+
+                                        <span id="pro_sku">SKU: @Model.Number</span>
+
+
+                                    </div>
+                                    <div class="product-price" id="price-preview"><span class="pro-price">@Model.FormattedPrice</span></div>
+                                
+                                
+                                
+                                    <div class="selector-actions">
+                                        <div class="quantity-area clearfix">
+                                            <input type="button" value="-" onclick="minusQuantity()" class="qty-btn qty-btn-minus">
+                                            <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                            <input type="button" value="+" onclick="plusQuantity()" class="qty-btn qty-btn-plus">
+                                        </div>
+                                        <div class="wrap-addcart">
+                                            <button type="submit" value="Add to Cart" id="add-to-cart" class="add-to-cartProduct btn btn-addtocart addtocart-modal" name="add">Thêm vào giỏ</button>
+                                            <button type="submit" value="Add to Cart" id="buy-now" class="hide  add-to-cartProduct btn btn-addtocart addtocart-modal" name="add" style="display: inline-block;">Mua ngay</button>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="tabs add-height-img">
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck1">
+                                            <label class="tab-label" for="chck1">Thông tin sản phẩm</label>
+                                            <div class="tab-content">
+                                               @Model.Description
+                                            </div>
+                                        </div>
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck2">
+                                            <label class="tab-label" for="chck2">Bảo hành chính hãng</label>
+                                            <div class="tab-content">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck3">
+                                            <label class="tab-label" for="chck3">Đổi trả miễn phí</label>
+                                            <div class="tab-content">
+                                                <p>Thật khó chịu nếu như bạn mua một đôi giày hiệu về nhưng lại&nbsp;<strong>không vừa size</strong>&nbsp;hoặc chỉ đơn giản là thay đổi ý thích của bản thân và không được&nbsp;<strong>đổi trả</strong>…</p>
+                                                <p>Chính vì vậy, <strong>jordan1.vn</strong> cam kết đem đến cho khách hàng trải nghiệm mua sắm hàng hiệu hài lòng nhất: quý khách hàng có thể đổi/ trả lại sản phẩm mới mua trong vòng 7 ngày kể từ ngày nhận
+                                                    hàng.&nbsp;
+                                                </p>
+                                                <h2>1. Điều kiện đổi trả</h2>
+                                                <div>- <strong>Sản phẩm áp dụng</strong>: Tất cả sản phẩm được giao dịch trên jordan1.vn,&nbsp;có chương trình khuyến mãi không quá 30%.<br>- <strong>Sản phẩm không áp dụng</strong>: Đồ lót, đồ bơi, Phụ kiện:
+                                                    Vớ, khăn, trang sức, móc khóa, ốp lưng, Shoecare, nước hoa,....</div>
+                                                <p>Quý Khách hàng cần kiểm tra tình trạng hàng hóa và có thể đổi hàng/ trả lại hàng ngay tại thời điểm giao/nhận hàng trong những trường hợp sau:</p>
+                                                <p>- Hàng không đúng chủng loại, mẫu mã trong đơn hàng đã đặt hoặc như trên website tại thời điểm đặt hàng.<br>Không đủ số lượng, không đủ bộ như trong đơn hàng.&nbsp;</p>
+                                                <p>- Tình trạng bên ngoài bị ảnh hưởng như rách bao bì, bong tróc, bể vỡ…<br>- Khách hàng có trách nhiệm trình giấy tờ liên quan chứng minh sự thiếu sót trên để hoàn thành việc hoàn trả/đổi trả hàng hóa.&nbsp;</p>
+                                                <p>- Khách hàng đổi trả Size trong vòng 3 ngày kể từ ngày nhận được giày.&nbsp;</p>
+                                                <p>- Trường hợp khách hàng muốn đổi sang sản phẩm khác phải có giá lớn hơn hoặc bằng giá sản phẩm đã mua( Trường hợp giá thấp hơn Jordan Việt Nam sẽ không hoàn tiền và chuyển số tiền đó sang dạng Voucher).</p>
+                                                <h2>2. Quy định về thời gian thông báo và gửi sản phẩm đổi/ trả</h2>
+                                                <p>- <strong>Thời gian thông báo đổi trả</strong>: trong vòng <strong>48h</strong> kể từ khi nhận sản phẩm đối với trường hợp sản phẩm thiếu phụ kiện, quà tặng hoặc bể vỡ.</p>
+                                                <p>- <strong>Thời gian gửi chuyển trả sản phẩm</strong>: trong vòng <strong>7 ngày</strong> kể từ khi nhận sản phẩm.</p>
+                                                <p>- Trong trường hợp Quý Khách hàng có ý kiến đóng góp/khiếu nại liên quan đến chất lượng sản phẩm. Quý Khách hàng vui lòng liên hệ đường dây chăm sóc khách hàng của chúng tôi.</p>
+                                                <p>- Mỗi sản phẩm chỉ được đổi, trả 1 lần.</p>
+                                                <h2>3. Yêu cầu về tình trạng hàng hóa</h2>
+                                                <p>- Sản phẩm ở tình trạng mới, chưa qua sử dụng, chưa qua giặt ủi/là, không có mùi lạ.</p>
+                                                <p>- Sản phẩm còn nguyên nhãn mác, hộp/bao bì sản phẩm đi kèm (nếu có).</p>
+                                                <p>- Khách hàng có chừng từ mua hàng đầy đủ của jordan1.vn.</p>
+                                                <p>- Không đổi/ trả hàng trong trường hợp lỗi do người sử dụng.</p>
+                                                <p>- Hàng không bị lỗi do quá trình lưu giữ, vận chuyển của người sử dụng.</p>
+                                                <p>- Áp dụng cho các sản phẩm giảm giá không quá 30% và sản phẩm nguyên giá</p>
+                                                <h2>4. Cách thức đổi/ trả</h2>
+                                                <p>- Đổi/ trả trực tiếp: Quý khách có thể mang sản phẩm đến trực tiếp địa chỉ của hệ thống cửa hàng jordan1.vn để đổi/ trả.</p>
+                                                <p>- Đổi/ trả online, tại nhà:&nbsp;</p>
+                                                <p>+ Bước 1: Quý khách hàng liên hệ hotline&nbsp;hoặc&nbsp;<strong>Fanpage</strong>,&nbsp;<strong>Zalo</strong>&nbsp;của jordan1.vn để yêu cầu đổi trả sản phẩm</p>
+                                                <p>+ Bước 2: Quý khách gửi lại sản phẩm cần đổi trả&nbsp;và jordan1.vn sẽ&nbsp;tiếp nhận sản phẩm đó.</p>
+                                                <p>+ Bước 3: <strong>Jordan1.vn</strong> sẽ tiến hành kiểm định chất lượng sản phẩm và&nbsp;thực hiện gửi sản phẩm mới về cho khách hàng.</p>
+                                                <p><strong>Các lưu ý khi gửi kiện hàng thông qua dịch vụ chuyển phát:</strong></p>
+                                                <ul>
+                                                    <li><strong>jordan1.vn</strong> không chịu trách nhiệm về tính nguyên vẹn và đầy đủ của hàng hóa bên trong kiện hàng khi khách gửi qua dịch vụ chuyển phát.</li>
+                                                    <li>Khách hàng cần đóng gói cẩn thận để đảm bảo hàng hóa không bị mất mát, thất lạc.</li>
+                                                    <li>Khách hàng nên chụp ảnh sản phẩm, gói hàng trước khi đổi/ trả hàng. Việc lưu trữ hình ảnh sẽ góp phần giải quyết tốt hơn các vấn đề phát sinh trong quá trình đổi/trả hàng qua dịch vụ chuyển phát.</li>
+                                                </ul>
+                                                <div>
+                                                    <p><strong>Mọi thắc mắc xin liên hệ:</strong></p>
+                                                    <p>Tổng đài mua hàng: 096 4907 954</p>
+                                                    <p>Tổng đài CSKH: 078 3455 333</p>
+                                                    <p>Thời gian làm việc tổng đài CSKH: 8:30 - 17h30 (Thứ 2 - Thứ 7)</p>
+                                                    <p>Email:&nbsp;<a href="mailto:cs@hoang-phuc.com">cskh</a>jordan.vn</p>
+                                                    <p>Website: www.Jordan1.vn</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="tab">
+                                            <input type="checkbox" id="chck4">
+                                            <label class="tab-label" for="chck4">Giao hàng nhanh chóng</label>
+                                            <div class="tab-content">
+                                                <p>Giao hàng nhanh, chính xác&nbsp;và đúng hẹn&nbsp;cho các&nbsp;đơn hàng luôn là tiêu chí hàng đầu mà Jordan1.vn đặt ra. Khách hàng có thể an tâm khi đặt niềm tin ở&nbsp;Jordan1.vn, các sản phẩm quí khách
+                                                    lựa chọn sẽ luôn đến tay quý khách với trải nghiệm tuyệt vời nhất.</p>
+                                                <p>Jordan1.vn đang là đối tác lớn với các đơn vị giao hàng nổi tiếng có uy tín như Giao Hàng Tiết Kiệm, Nasco và&nbsp;AhaMove.</p>
+                                                <h2>THỜI GIAN VẬN CHUYỂN TRUNG BÌNH</h2>
+                                                <ul>
+                                                    <li>Đơn hàng&nbsp;nội thành Hà Nội: Khách hàng sẽ nhận được trong vòng 24 tiếng kể từ khi được xác nhận đơn hàng (trừ trường hợp đơn hàng dạng đặt trước hoặc chưa đủ tồn kho,&nbsp;<strong>Jordan1.vn</strong>&nbsp;sẽ
+                                                        gửi đi từ kho vận hành khác tỉnh và CSKH của <b>Jordan1.vn</b>&nbsp;sẽ thông báo cho khách hàng về vấn đề này). Thông thường có thể sớm hơn tuỳ thuộc vào thời gian khách hàng đặt&nbsp;<strong>(Không tính ngày lễ)</strong>.</li>
+                                                    <li><strong>Các khu vực khác:</strong>&nbsp;<strong>3-5 ngày</strong>&nbsp;(thường là&nbsp;<strong>2-3</strong>&nbsp;ngày), nếu sau 5 ngày kể từ khi đặt hàng mà Anh/Chị chưa nhận được cuộc gọi giao hàng
+                                                        của bưu tá thì vui lòng xin liên hệ&nbsp;<strong>Jordan1.vn</strong>&nbsp;để được hỗ trợ (không bao gồm chủ nhật và ngày lễ).</li>
+                                                </ul>
+                                                <div>
+                                                    <p>Trong các trường hợp có phát sinh dịch bệnh: (Covid, SARS, …) hoặc trong các trường hợp bất khả kháng tại thời điểm phát sinh theo quy định của cơ quan quản lý nhà nước vực giao hàng có thể thay đổi
+                                                        theo quy định của cơ quan quản lý nhà nước phát sinh trong khu vực này.</p>
+                                                    <p>Đơn hàng sẽ được giao tới tận nhà của khách hàng, ngoại trừ các trường hợp như: khu vực văn phòng hạn chế ra vào, khu vực chung cư/ cao tầng (chỉ phục vụ giao tại chân tòa nhà) hoặc bên trong các khu
+                                                        vực hạn chế đi lại (khu vực quân sự, biên giới, …).</p>
+                                                    <h2>QUY ĐỊNH KIỂM TRA HÀNG HÓA KHI GIAO NHẬN HÀNG</h2>
+                                                    <p>Nhằm bảo vệ tối đa quyền lợi khách hàng khi mua sắm tại <strong>Jordan1.vn</strong>, chúng tôi có chính sách đồng kiểm khi nhận hàng như sau:</p>
+                                                    <p>- Quý khách được quyền yêu cầu nhân viên giao hàng mở niêm phong thùng hàng&nbsp;để kiểm tra số lượng, màu sắc, chủng loại, kích cỡ, ngoại quan của các sản phẩm đã mua trước khi nhận. (Lưu ý: Việc đồng
+                                                        kiểm chỉ áp dụng kiểm tra ngoại quan, không áp dụng cho việc dùng thử sản phẩm và kiểm tra sâu chi tiết lỗi của sản phẩm).</p>
+                                                    <p>- Trường hợp Quý khách không ưng ý với sản phẩm và đơn hàng.&nbsp;Quý khách vui lòng liên hệ phòng chăm sóc khách hàng của <strong>jordan1.vn</strong>&nbsp;để được hỗ trợ về vấn đề hoàn tiền mà không
+                                                        mất bất cứ chi phí nào.</p>
+                                                    <p>-&nbsp; Trường hợp nhân viên giao hàng từ chối cho Quý khách kiểm tra hàng, Quý khách có quyền từ chối nhận hàng, sau đó liên hệ đến phòng CSKH để <strong>jordan1.vn</strong>&nbsp;yêu cầu nhân viên phải
+                                                        giao hàng lại cho Quý khách và phải cho Quý khách kiểm tra hàng. Hoặc Quý khách có thể gọi ngay lên phòng CSKH để được hỗ trợ ngay lập tức.</p>
+                                                    <p>- Trường hợp Quý khách hài lòng với tình trạng sản phẩm được giao và đồng ý mua sản phẩm.&nbsp;Quý khách vui lòng ký vào biên bản đồng kiểm. Bằng việc ký vào biên bản đồng kiểm xác nhận hài lòng với
+                                                        tình trạng sản phẩm được giao, Quý khách xác nhận đã hoàn thành việc đồng kiểm và hoàn tất mua hàng. &nbsp;</p>
+                                                    <p>- Các sản phẩm nằm trong chương trình ưu đãi, khuyến mãi, giảm giá, quà tặng… không áp dụng đổi/trả, vì vậy quý khách vui lòng kiểm tra sản phẩm kỹ trước khi nhận hàng. Supersports sẽ không áp dụng đổi/
+                                                        trả với các đơn hàng đã được xác nhận đồng kiểm bởi Quý khách. &nbsp;</p>
+                                                    <h2>QUY ĐỊNH PHÍ GIAO HÀNG</h2>
+                                                    <p>- Phí giao hàng của đơn hàng được tính dựa theo khoảng cách giữa cửa hàng cung cấp với địa chỉ giao hàng cùng với trọng lượng của sản phẩm.</p>
+                                                    <p>- Phí giao hàng của từng sản phẩm được thể hiện rõ ngay tại trang sản phẩm sau khi khách hàng nhập địa chỉ giao hàng.</p>
+                                                    <p><strong>Mọi thắc mắc xin liên hệ:</strong></p>
+                                                    <p>Tổng đài mua hàng: 096 4907 954</p>
+                                                    <p>Tổng đài CSKH: 078 3455 333</p>
+                                                    <p>Thời gian làm việc tổng đài CSKH: 8:30 - 17h30 (Thứ 2 - Thứ 7)</p>
+                                                    <p>Email:&nbsp;<a href="mailto:cs@hoang-phuc.com">cskh</a>jordan.vn</p>
+                                                    <p>Website: www.Jordan1.vn</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+

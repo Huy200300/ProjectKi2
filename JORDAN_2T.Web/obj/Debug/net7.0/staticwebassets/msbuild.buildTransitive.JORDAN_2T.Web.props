@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\JORDAN_2T.Web.props" />
+</Project>

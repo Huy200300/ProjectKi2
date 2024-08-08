@@ -1,0 +1,28 @@
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.deps.json
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.runtimeconfig.json
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.csproj.AssemblyReference.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.AssemblyInfoInputs.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.AssemblyInfo.cs
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.csproj.CoreCompileInputs.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\refint\JORDAN_2T.ApplicatonCore.dll
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.genruntimeconfig.cache
+D:\CODE\ASP.NET CORE PROJECT\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\ref\JORDAN_2T.ApplicatonCore.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.deps.json
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.runtimeconfig.json
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\bin\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.csproj.AssemblyReference.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.AssemblyInfoInputs.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.AssemblyInfo.cs
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.csproj.CoreCompileInputs.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\refint\JORDAN_2T.ApplicatonCore.dll
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.pdb
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\JORDAN_2T.ApplicatonCore.genruntimeconfig.cache
+D:\HTG_Shop\run\JORDAN_2T\JORDAN_2T.ApplicatonCore\obj\Debug\net7.0\ref\JORDAN_2T.ApplicatonCore.dll

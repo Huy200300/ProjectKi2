@@ -1,0 +1,35 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.CategoryVM
+@{
+    ViewBag.Title = "Edit Category";
+}
+
+<div class="container">
+     <section class="mt-5">
+        <header>
+            <h1 class="heading-line mb-5">@String.Format("Edit Category #{0}", Model.Id)</h1>
+        </header>
+    </section>
+    <section class="item-details">
+        <div >
+            <div class="tab-pane fade show " id="details" aria-labelledby="detail-tab">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken();
+                    <div class="card-block">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group p-3">
+                            <label asp-for="Name" class="control-label mb-1"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter a name for the item"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>   
+                    </div>
+                    <div class="card-footer p-3">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <a asp-controller="Category" asp-action="Index"  class = "btn btn-secondary">Cancel</a>
+                    </div>
+                }
+            </div>
+            
+        </div>
+    </section>
+</div>

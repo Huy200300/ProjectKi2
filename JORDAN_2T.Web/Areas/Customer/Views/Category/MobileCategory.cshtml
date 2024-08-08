@@ -1,0 +1,55 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.HomeMovieListVM
+
+<ul>
+
+            <li class="has-children">
+                <a asp-controller="Home" asp-action="Index" >Trang chủ </a>
+
+            </li>
+
+            <li class="has-children">
+                 @foreach (var item in Model.category)
+                {
+                    <a href="">@item.Name <i class="fal fa-angle-right"></i></a>
+                
+                    <ul class="child count-nav-14">
+                        @foreach (var items in Model.subCategory)
+                        {
+                            @if(items.CategoryId==item.Id){
+
+                                <li class="has-children">
+                                    <a href="">@items.Name<i class="fal fa-angle-right"></i></a>
+
+
+                                </li>
+                            }
+                        }
+                       
+
+                    </ul>
+                }
+            </li>
+            <li class="has-children">
+                <a href="/blogs/news">Blog </a>
+
+            </li>
+
+
+            <li class="has-children">
+                <a href="/pages/thong-tin-lien-he">Thông tin liên hệ</a>
+            </li>
+
+            <li class="has-children">
+                <a href="/pages/huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+            </li>
+
+            <li class="has-children">
+                <a href="/pages/phuong-thuc-thanh-toan">Phương thức thanh toán</a>
+            </li>
+
+            <li class="has-children">
+                <a href="/pages/ho-tro-va-giai-dap-thac-mac">Hỗ trợ và giải đáp thắc mắc</a>
+            </li>
+
+            <li class="mobile-hotline"><a href="tel: 078 3455333">Hotline: 078 3455333</a></li>
+        </ul>

@@ -1,0 +1,56 @@
+@model JORDAN_2T.ApplicationCore.ViewModels.OrderHistoryVM
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-dark text-light ml-0">
+				<div class="row">
+					<div class="col-6 pt-1">
+						<i class="fa fa-shopping-cart"></i>&nbsp;Order History
+					</div>
+					<div class="col-6 text-end">
+						<a asp-area="Customer" asp-controller="Home" asp-action="Index"
+							class="btn btn-outline-info btn-sm">Continue Shopping</a>
+					</div>
+				</div>
+			</div>
+			<div class="card-block">
+                <table class="table">
+                    <thead>
+                        <tr class="row m-2">
+                            <th class="d-inline-block col-md-2 col-2">OrderDate</th>
+                            <th class="d-inline-block col-md-2 col-2">OrderTotal</th>
+                            <th class="d-inline-block col-md-2 col-2">OrderStatus</th>
+                            <th class="d-inline-block col-md-2 col-2">PaymentStatus</th>
+                             <th class="d-inline-block col-md-2 col-2">Actions</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                            @foreach(var item in Model.Order){
+                                <tr class="row m-2">
+                                    
+                                    <td class="d-inline-block col-md-2 col-4">
+                                        @item.OrderDate
+                                    </td>
+                                     <td class="d-inline-block col-md-2 col-4">
+                                        @item.OrderTotal
+                                    </td>
+                                    <td class="d-inline-block col-md-2 col-4">
+                                        @item.OrderStatus
+                                    </td>
+                                    <td class="d-inline-block col-md-2 col-4">
+                                        @item.PaymentStatus
+                                    </td>
+                                    <td class="d-inline-block col-md-2 col-4">
+                                        <a asp-controller="OrderHistory" asp-action="OrderDetails" asp-route-id="@item.Id" class="btn btn-warning btn-small">Order Details</a>
+
+                                    </td>
+                                </tr>
+                            }
+                        
+                    </tbody>
+                </table>
+            </div>
+		</div>
+	</div>
